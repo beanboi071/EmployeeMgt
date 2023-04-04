@@ -1,0 +1,24 @@
+﻿@model HomeDetailViewModel
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+@{
+    ViewData["Title"] = "Details";
+    var photoPath = "~/images/" + (@Model.Employee.Photo??"noimage.jfif");
+}
+    <h2>@Model.pgTitle</h2>
+
+<div style="width:300px;" id="mainDiv">
+    <img class="card-img-top" src="@photoPath" asp-append-version="true"/>
+    <p>Name: @Model.Employee.Name</p>
+    <p>E-mail: @Model.Employee.Email</p>
+    <p>department: @Model.Employee.Department</p>
+</div>
+<div class="card-footer text-center">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a>
+</div>
+@section StyleSheet{
+    <link href="~/css/detail.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/js/custom.js"></script>
+}
