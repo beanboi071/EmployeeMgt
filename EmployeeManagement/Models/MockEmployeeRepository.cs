@@ -35,7 +35,7 @@
             return _employeeList;
         }
 
-        public Employee GetEmployee(int Id)
+        public Employee GetEmployee(int? Id)
         {
             return _employeeList.FirstOrDefault(e => e.Id == Id);
         }

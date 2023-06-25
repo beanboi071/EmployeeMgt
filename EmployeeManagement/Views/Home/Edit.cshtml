@@ -1,12 +1,18 @@
-﻿@model EmployeeCreateViewModel
-@{/*@inject IEmployeeRepository _empRepository*/}
+﻿@model EmployeeEditViewModel
 @{
-    ViewData["Title"] = "Create";
+    /*@inject IEmployeeRepository _empRepository*/
+}
+@{
+    string phpath = "~/images/" + (Model.ExistingPhotoPath ?? "noimage.jfif");
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create</h1>
-<form enctype="multipart/form-data" asp-controller="Home" asp-action="Create" method="post" class="mt-3">
+<h1>Edit</h1>
+
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="Edit" method="post" class="mt-3">
     <div class="form-group row">
+        <input hidden asp-for="Id" />
+        <input hidden asp-for="ExistingPhotoPath"/>
         <label asp-for="Name" >Name</label>
         <div class="col-sm-10">
             <input asp-for="Name"/>
@@ -37,15 +43,17 @@
             </div>
         </div>
     </div>
+    <img class="imageThumbnail" src="@phpath" asp-append-version="true" />
     <div asp-validation-summary="All" class="text-danger">
     </div>
     
     <div>
-        <button class="btn btn-primary" type="submit">Create</button>
+        <button class="btn btn-primary" type="submit">Edit</button>
+        <a asp-asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
     </div>
 </form>
-@section Scripts{
-
+@section StyleSheet{
+     <link href="~/css/index.css" rel="stylesheet" />
 }
 
 

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EmployeeManagement</title>
     @RenderSection("StyleSheet",required:false)
-     <environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     </environment>
     <environment exclude="Development">
@@ -17,7 +18,7 @@
         asp-fallback-test-property="position"
         asp-fallback-test-value="absolute"
         asp-suppress-fallback-integrity="true">
-    </environment>
+    </environment>*@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EmployeeManagement.styles.css" asp-append-version="true" />
 </head>

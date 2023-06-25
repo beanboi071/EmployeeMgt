@@ -30,17 +30,23 @@
             return context.Employees;
         }
 
-        public Employee GetEmployee(int Id)
+        public Employee GetEmployee(int? Id)
         {
-            return context.Employees.Find(Id);
+            return context.Employees.FirstOrDefault(x=>x.Id == Id);
         }
 
         public Employee Update(Employee EmployeeChanges)
         {
-            var employee = context.Employees.Attach(EmployeeChanges);
-            employee.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
-            return EmployeeChanges;
+            var employee = context.Employees.Find(EmployeeChanges.Id);
+            if(employee != null)
+            {
+                employee.Name = EmployeeChanges.Name;
+                employee.Email = EmployeeChanges.Email;
+                employee.Department = EmployeeChanges.Department;
+                employee.Photo = EmployeeChanges.Photo;
+                context.SaveChanges();
+            }
+            return employee;
         }
     }
 }
